@@ -1,25 +1,31 @@
 alerts:
-  - name: TODO_alert_1
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: high_latency_p95
+    severity: P2
+    condition: 'p95(response_sent.latency_ms) > 3000 over 5m window'
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-1
-  - name: TODO_alert_2
-    severity: TODO
-    condition: TODO
-    duration: TODO
+    slack_channel: '#day13-l3a-oncall'
+    owner: nguyentientuan (on-call LLMOps)
+    slo: fast_successful_requests
+    runbook: docs/alerts.md#alert-1-high_latency_p95
+  - name: high_error_rate
+    severity: P1
+    condition: 'count(request_failed) / count(request_received) * 100 > 2 over 5m window'
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-2
-  - name: TODO_alert_3
-    severity: TODO
-    condition: TODO
-    duration: TODO
+    slack_channel: '#day13-l3a-oncall'
+    owner: nguyentientuan (on-call LLMOps)
+    slo: fast_successful_requests
+    runbook: docs/alerts.md#alert-2-high_error_rate
+  - name: cost_budget_burn
+    severity: P2
+    condition: 'sum(response_sent.cost_usd) over 1h > 0.21 USD (2x daily budget 2.5 USD / 24h)'
+    duration: 15m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-3
+    slack_channel: '#day13-l3a-oncall'
+    owner: nguyentientuan (on-call LLMOps)
+    slo: guardrails.daily_cost_usd_max
+    runbook: docs/alerts.md#alert-3-cost_budget_burn

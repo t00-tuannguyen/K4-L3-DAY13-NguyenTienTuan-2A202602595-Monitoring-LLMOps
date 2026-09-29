@@ -1,0 +1,75 @@
+[
+  {
+    "traceId": "e043ea7a2d538997b123863522720cf5",
+    "id": "ef4731e0fe93b804",
+    "type": "RETRIEVER",
+    "name": "retrieval",
+    "parentObservationId": "d244681c504ecc84",
+    "startTime": "2026-09-29T09:06:38.268Z",
+    "endTime": "2026-09-29T09:06:40.774Z",
+    "latency": 2.506,
+    "model": "",
+    "usageDetails": {},
+    "costDetails": {},
+    "metadata": {
+      "correlation_id": "req-743e0bb0",
+      "feature": "monitoring",
+      "model": "claude-sonnet-4-5",
+      "doc_count": 1,
+      "query_preview": "Describe how to prove a slow span is the root cause."
+    }
+  },
+  {
+    "traceId": "e043ea7a2d538997b123863522720cf5",
+    "id": "d244681c504ecc84",
+    "type": "AGENT",
+    "name": "lab-agent-run",
+    "parentObservationId": null,
+    "startTime": "2026-09-29T09:06:38.268Z",
+    "endTime": "2026-09-29T09:06:40.936Z",
+    "latency": 2.668,
+    "model": "",
+    "usageDetails": {},
+    "costDetails": {},
+    "metadata": {
+      "correlation_id": "req-743e0bb0",
+      "feature": "monitoring",
+      "model": "claude-sonnet-4-5",
+      "doc_count": 1,
+      "query_preview": "Describe how to prove a slow span is the root cause.",
+      "prompt_name": "day13-chat",
+      "prompt_label": "production",
+      "prompt_version": 1,
+      "prompt_source": "langfuse"
+    }
+  },
+  {
+    "traceId": "e043ea7a2d538997b123863522720cf5",
+    "id": "7c9a8875fe11dd11",
+    "type": "GENERATION",
+    "name": "llm-generate",
+    "parentObservationId": "d244681c504ecc84",
+    "startTime": "2026-09-29T09:06:40.774Z",
+    "endTime": "2026-09-29T09:06:40.936Z",
+    "latency": 0.162,
+    "model": "claude-sonnet-4-5",
+    "usageDetails": {
+      "input": 35,
+      "output": 115,
+      "total": 150
+    },
+    "costDetails": {
+      "input": 0.000104999999,
+      "output": 0.001725,
+      "total": 0.00183
+    },
+    "metadata": {
+      "correlation_id": "req-743e0bb0",
+      "feature": "monitoring",
+      "model": "claude-sonnet-4-5",
+      "prompt_version": 1,
+      "prompt_source": "langfuse",
+      "ttft_ms": 55
+    }
+  }
+]

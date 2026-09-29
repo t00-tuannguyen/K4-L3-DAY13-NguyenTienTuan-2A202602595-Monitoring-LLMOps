@@ -7,7 +7,21 @@ primary_slo:
     total_event: 'event == "request_received"'
   target_percent: 99.5
   error_budget_percent: 0.5
-  note: Học viên phải giải thích hoặc điều chỉnh ngưỡng bằng baseline của mình.
+  # Ví dụ: 1 req/phút trong 28 ngày = 40,320 request -> được phép tối đa ~201 request lỗi hoặc chậm > 3 s.
+  error_budget_example:
+    requests_per_28d_at_1_rpm: 40320
+    allowed_bad_requests: 201
+  burn_rate_alerts:
+    # Burn rate = tỷ lệ bad event hiện tại / 0.5%. Burn 14.4 trong 1h tiêu hết ~2% budget 28 ngày.
+    fast_burn: {window: 1h, burn_rate: 14.4, severity: P1}
+    slow_burn: {window: 6h, burn_rate: 6, severity: P2}
+  rationale: >
+    Baseline (10 request, trước khi tạo prompt trên Langfuse) có P95 3305 ms, trong đó ~2 s là
+    timeout khi fetch prompt `day13-chat` chưa tồn tại. Phần xử lý thật (retrieval + FakeLLM) chỉ
+    ~150-200 ms, TTFT P95 55 ms. Sau khi prompt được cache (TTL 60 s), P95 kỳ vọng < 1.5 s, nên
+    3000 ms cho đủ khoảng dư cho network/Langfuse mà vẫn bắt được incident `rag_slow` (+2.5 s/request).
+    99.5% thay vì 99.9% vì app phụ thuộc Langfuse Cloud bên ngoài; 99.9% trong 28 ngày chỉ cho
+    ~40 bad request ở 1 rpm, quá chặt với một lab chạy trên laptop.
 guardrails:
   error_rate_pct_max: 2
   daily_cost_usd_max: 2.5

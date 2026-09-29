@@ -1,0 +1,76 @@
+[
+  {
+    "traceId": "23dc6619dd19a93f529983277e2adc0a",
+    "id": "d55f6596d8abfc5f",
+    "type": "RETRIEVER",
+    "name": "retrieval",
+    "parentObservationId": "29b61da5bd02a879",
+    "startTime": "2026-09-29T08:45:20.751Z",
+    "model": null,
+    "promptName": null,
+    "promptVersion": null,
+    "usageDetails": {},
+    "costDetails": {},
+    "metadata": {
+      "correlation_id": "req-0000b005",
+      "model": "claude-sonnet-4-5",
+      "feature": "qa",
+      "query_preview": "Explain monitoring",
+      "doc_count": 1
+    }
+  },
+  {
+    "traceId": "23dc6619dd19a93f529983277e2adc0a",
+    "id": "29b61da5bd02a879",
+    "type": "AGENT",
+    "name": "lab-agent-run",
+    "parentObservationId": null,
+    "startTime": "2026-09-29T08:45:20.751Z",
+    "model": null,
+    "promptName": null,
+    "promptVersion": null,
+    "usageDetails": {},
+    "costDetails": {},
+    "metadata": {
+      "correlation_id": "req-0000b005",
+      "model": "claude-sonnet-4-5",
+      "feature": "qa",
+      "prompt_fetch_error": "",
+      "prompt_source": "langfuse",
+      "prompt_version": 1,
+      "prompt_label": "production",
+      "prompt_name": "day13-chat",
+      "query_preview": "Explain monitoring",
+      "doc_count": 1
+    }
+  },
+  {
+    "traceId": "23dc6619dd19a93f529983277e2adc0a",
+    "id": "f14a8934d2325e40",
+    "type": "GENERATION",
+    "name": "llm-generate",
+    "parentObservationId": "29b61da5bd02a879",
+    "startTime": "2026-09-29T08:45:20.752Z",
+    "model": "claude-sonnet-4-5",
+    "promptName": "day13-chat",
+    "promptVersion": 1,
+    "usageDetails": {
+      "input": 33,
+      "output": 154,
+      "total": 187
+    },
+    "costDetails": {
+      "input": 9.9e-05,
+      "output": 0.00231,
+      "total": 0.002409
+    },
+    "metadata": {
+      "correlation_id": "req-0000b005",
+      "model": "claude-sonnet-4-5",
+      "feature": "qa",
+      "prompt_source": "langfuse",
+      "prompt_version": 1,
+      "ttft_ms": 53
+    }
+  }
+]
